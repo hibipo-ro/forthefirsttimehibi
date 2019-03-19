@@ -1,0 +1,14 @@
+<h1>編集</h1>
+<div class="card mb-5" style="width: 23rem; height: 23rem;">
+  <div class="card-body">
+    <form action="/update" method="post">
+      <input type="hidden" name="id" value="<%= @edit['id'] %>">
+      <img src="/images/<%= @edit["image_url"] %>" class="card-img-top img-fluid">
+      <textarea name="content">
+        <%= @edit['content'] %>
+      </textarea>  
+      <input type="submit" value="編集！">
+    </form>
+  </div>
+</div>
+

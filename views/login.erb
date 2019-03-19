@@ -1,0 +1,14 @@
+<img src="https://images.cooltext.com/5268685.png" width="350" height="45" class="anime_test">
+<div class="text-center font-weight-bold"><a href="/line">試しに使ってみる</a></div>
+<div class="container">
+	<div class="wrapper">
+		<form action="/login" method="post" name="Login_Form" class="form-signin">       
+		    <h3 class="form-signin-heading">ログイン</h3>
+			  <hr class="colorgraph"><br>
+			  <input type="text" class="form-control" name="l_name" placeholder="Username" value="<%= cookies[:l_name] if cookies[:l_name] %>" required="">
+			  <input type="password" class="form-control" name="l_pass" placeholder="Password" required=""/>     		  
+			  <button class="btn btn-lg btn-primary btn-block"  name="Submit" value="Login" type="Submit">Login</button>  			
+        <a href="/sign_up" id="new">新規登録はこちら</a>
+		</form>			
+	</div>
+</div>

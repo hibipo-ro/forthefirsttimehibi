@@ -1,0 +1,35 @@
+<section class="jumbotron text-center">
+  <ul class="nav justify-content-center">
+    <li class="nav-item">
+      <a class="nav-link active" href="/profile">プロフィール</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/line?n_page=%201">一覧</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/top">マイページ</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/follow_list">フォローリスト</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/follower_list">フォロワーリスト</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"></a>
+    </li>
+  </ul>    
+</section>  
+
+
+<div class="container">
+  <div class="row">
+    <% @posts.each do |post| %>
+    <div class="col-4">
+      <%= post['name'] %>
+      <img src="/profile_images/<%= post['profile_image_url'] %>" class="rounded-circle mt-5" style="width: 250px;height: 250px;">
+    </div>
+    <% end %>
+  </div>
+</div>
+

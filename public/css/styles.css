@@ -1,0 +1,265 @@
+img#icon{
+  width: 40px;
+  height: 40px;
+  top: 0px;
+  position: absolute;
+}
+
+img#icon:hover{
+  transform: scale(1.5);
+}
+
+
+#post_name{
+  position: relative;
+  left: 100px;
+  cursor: pointer;
+}
+
+#follow{
+  position: relative;
+  top: 0px;
+}
+
+#li{
+  list-style: none;
+}
+
+
+.wrapper {    
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.form-signin {
+  max-width: 420px;
+  padding: 30px 38px 66px;
+  margin: 0 auto;
+  background-color: #eee;
+  border: 3px dotted rgba(0,0,0,0.1);  
+  }
+
+.form-signin-heading {
+  text-align:center;
+  margin-bottom: 30px;
+}
+
+.form-control {
+  position: relative;
+  font-size: 16px;
+  height: auto;
+  padding: 10px;
+}
+
+input[type="text"] {
+  margin-bottom: 0px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+input[type="password"] {
+  margin-bottom: 20px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.colorgraph {
+  height: 7px;
+  border-top: 0;
+  background: #c4e17f;
+  border-radius: 5px;
+  background-image: -webkit-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+  background-image: -moz-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+  background-image: -o-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+  background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+}
+
+#new{
+  position: relative;
+  top: 30px;
+}
+
+.hidden{
+  display: none;
+}
+    
+.hide{
+  display: none
+}
+
+#trim {
+  width: 100%;  /* トリミングしたい幅 */
+  overflow: hidden;
+  position: relative;
+} 
+
+#trim img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+#like{
+  position: fixed;
+  top: 550px;
+}
+
+#comment,#content{
+  position: relative;
+  top: 70px;
+  left: 10px;
+}
+
+#name{
+  position: relative;
+  top: 8px;
+  right: 350px;
+}
+
+#name_size{
+  font-size: 25px;
+}
+
+#rank1{
+  position: relative;
+  bottom: 2800px;
+  color: red;
+  font-size: 50px;
+}
+#rank2{
+  position: relative;
+  bottom: 2150px;
+  color: red;
+  font-size: 50px;
+}
+#rank3{
+  position: relative;
+  bottom: 1500px;
+  color: red;
+  font-size: 50px;
+}
+#rank4{
+  position: relative;
+  bottom: 850px;
+  color: red;
+  font-size: 50px;
+}
+#rank5{
+  position: relative;
+  bottom: 200px;
+  color: red;
+  font-size: 50px;
+}
+
+#rank_image{
+  position: relative;
+  top: 20px;
+}
+
+#faslike{
+  position: relative;
+  top: 140px;
+  left: 100px;
+}
+
+#caption {
+	font-size:		130%;
+  position: relative;
+	top: 113px;
+  left: 130px;
+	color: #fff;
+}
+
+#fascomment{
+  position: relative;
+  top: 85px;
+  left: 180px;
+}
+
+#caption2{
+  font-size: 130%;
+  position: relative;
+  top: 58px;
+  left: 210px;
+	color:	#fff;
+}
+
+.post_blcok {
+  max-height: calc(90vw / 3);
+  padding: 1%;
+}
+
+#trim_top {
+  height: 100%;
+} 
+
+#trim_top img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  border-radius: 8px;
+  height: 100%;
+}
+
+.sample1 {
+  overflow: hidden;
+  max-height: calc(120vw / 3);
+  height: 300px;
+	width: 100%;
+  border-radius: 8px;
+	position:	relative;	/* 相対位置指定 */
+}
+
+.sample1 .mask {
+	width: 100%;
+	height: 100%;
+	position:	absolute;	/* 絶対位置指定 */
+	top: 0;
+	left:	0;
+	opacity: 0;	/* マスクを表示しない */
+	background-color:	rgba(0,0,0,0.4);	/* マスクは半透明 */
+	-webkit-transition:	all 0.2s ease;
+	transition:	all 0.2s ease;
+}
+
+.sample1:hover .mask {
+	opacity: 1;	/* マスクを表示する */
+}
+
+.my-white{
+  color: white;
+}
+
+#mobileHidden { display:none;}
+ 
+@media screen and (min-width:480px) { 
+  #desktopHidden { display:none;}
+  #mobileHidden { display:inline;}
+}
+
+.anime_test {
+  display:  block;                /* ブロック要素にする */
+  margin: 0 auto;                 /* 要素中央揃え */
+  position:  relative;            /* 位置指定 */
+  animation: anime1 1s ease;      /* アニメーション指定 */
+}
+ 
+@keyframes anime1 {
+  0% {
+    opacity:  0;                /* 透明度指定 */
+    top: 50px;                  /* 位置指定 */
+  }
+  100% {
+    opacity:  1;                /* 透明度指定 */
+    top: 0;                     /* 位置指定 */
+    }
+}
+
+
+
+
+
+
+
+

@@ -1,0 +1,79 @@
+<section class="jumbotron text-center">
+  <ul class="nav justify-content-center">
+    <li class="nav-item">
+      <a class="nav-link active" href="/profile">プロフィール</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/line?n_page=%201">一覧</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/top">マイページ</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/follow_list">フォローリスト</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/follower_list">フォロワーリスト</a>
+    </li>
+  </ul>    
+</section>  
+
+
+<h1>投稿</h1>
+<form action="/send_image" method="POST" enctype="multipart/form-data">
+  <input type="file" name="image" required=""><br><br>
+  <textarea type="text" name="content" placeholder="投稿内容" cols="30" rows="4"></textarea>
+  <input type="submit" value="送信">
+</form> 
+
+<h1>写真ページ</h1>
+<div class="container">
+  <div class="row">
+    <% @posts.each do |post| %>
+    <div class="card col-4 post_blcok">
+      <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal_<%= post['id'] %>">モーダルを表示する</button>
+      <div class="modal" id="exampleModal_<%= post['id'] %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <div class="container">
+                <div class="row">
+                  <div class="col-7">
+                    <h5 class="modal-title" id="exampleModalLabel"><a href="/edit_form/<%= post['id'] %>">編集</a>
+                      <a href="/delete/<%= post['id'] %>">削除</a></h5>
+                      <div class="modal-body"><img src="/images/<%= post["image_url"] %>" class="card-img-top img-fluid" alt="..."></div>
+                  </div>
+                  <div class="col-5">
+                    <div class=""><img src="/profile_images/<%= my_info["profile_image_url"] %>" class="card-img-top img-fluid rounded-circle" alt="..." id="icon"></div>
+                    <div class="float-right font-weight-bold" id="name"><%= my_info['name'] %></div>
+                    <div id="content"><span class="font-weight-bold"><%= my_info['name'] %></span> <%= post['content'] %></div>
+                    <div id="comment">
+                    <% post['comment'].each do |comment| %>
+                    <li id="li"><span class="font-weight-bold"><%= comment['name'] %></span> <%= comment['comment'] %></li>
+                    <% end %>
+                    </div>  
+                    <p class="font-weight-bold" id="like">「いいね！」<%= post['like_count'] %>件</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sample1">
+        <div id="trim_top"><img src="/images/<%= post["image_url"] %>" class="card-img-top" alt="..."></div>
+      	<div class="mask">
+          <div id="faslike"><i class="fas fa-heart my-white"></i></div>
+      		<div id="caption"><%= post['like_count'] %></div>
+      	  <div id="fascomment"><i class="fas fa-comment my-white"></i></div>
+          <div id="caption2"><%= post['comment_count'] %></div>
+        </div>
+      </div>  
+    </div>
+    <% end %>
+  </div>
+</div>
+
+<br />
+<br />
+<br />

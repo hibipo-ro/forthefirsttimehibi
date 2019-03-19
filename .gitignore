@@ -1,0 +1,6 @@
+public/images/*.jpg
+public/profile_images/*.jpg
+!public/profile_images/sample.jpg
+
+
+

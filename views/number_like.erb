@@ -1,0 +1,49 @@
+<section class="jumbotron text-center">
+  <ul class="nav justify-content-center">
+    <li class="nav-item">
+      <a class="nav-link active" href="/profile">プロフィール</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/line?n_page=%201">一覧</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/top">マイページ</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/follow_list">フォローリスト</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/follower_list">フォロワーリスト</a>
+    </li>
+  </ul>    
+</section> 
+
+<a class="nav-link" href="/line?n_page=%201">写真ページ</a>
+
+
+<div class="container">
+
+<div class="row">
+  <% @posts.each do |post| %>
+  <div class="col-7" style="width: 45rem; height: 45rem;">
+    <div id="post_name" class="font-weight-bold"> <%= post['name'] %></div>
+    <a href="/profile"><img src="/profile_images/<%= post["profile_image_url"] %>" class="card-img-top img-fluid rounded-circle" alt="..." id="icon"></a>    
+    <div id="rank_image"><img src="/images/<%= post["image_url"] %>" class="card-img-top img-fluid" alt="..."></div>
+    <div class="card-body mt-3">
+      <p class="card-text"><%= post['content'] %></p>
+    </div>
+    <p class="font-weight-bold">「いいね！」<%= post['like_count'] %>件</p>
+  </div>
+  <% end %>  
+  <div class="col-5">
+    <div id="rank1">1位</div>
+    <div id="rank2">2位</div>
+    <div id="rank3">3位</div>
+    <div id="rank4">4位</div>
+    <div id="rank5">5位</div>
+  </div>
+</div>
+
+</div>
+
+

@@ -1,0 +1,91 @@
+<section class="jumbotron text-center">
+  <ul class="nav justify-content-center">
+    <li class="nav-item">
+      <a class="nav-link active" href="/profile">プロフィール</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/line?n_page=%201">一覧</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/top">マイページ</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/follow_list">フォローリスト</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/follower_list">フォロワーリスト</a>
+    </li>
+  </ul>    
+</section> 
+
+<h1>写真ページ</h1>
+<div class="container">
+  <nav aria-label="ページ送りの実例">
+    <ul class="pagination" id="page">
+      <% for i in (1..@page_size) %>
+        <% if i == @n_page %>
+          <li class="page-item"><a class="page-link bg-primary" href="/line?n_page= <%= i %>"><span class="font-weight-bold text-white"><%= i %></span></a></li>
+        <% else %>
+          <li class="page-item"><a class="page-link" href="/line?n_page= <%= i %>"><%= i %></a></li>
+        <% end %>
+      <% end %>
+    </ul>
+  </nav>
+  <%= @path %>
+  全<%= @post_count %>件
+  <a href="/number_like">いいねランキング〜</a>
+  <div class="row">
+    <% @posts.each do |post| %>
+    <div class="card mb-5 col-md-8 col-12">
+      <div id="post_name" class="font-weight-bold"> <%= post['name'] %></div>
+      <a href="/profile"><img src="/profile_images/<%= post["profile_image_url"] %>" class="card-img-top img-fluid rounded-circle" alt="..." id="icon"></a>
+      <% if  session[:user_id] %>
+      <% if post['creater_id'] != my_info['id'] %>
+      
+        <% if is_follow(post['creater_id']) %>
+          <a href="/unfollow/<%= post['creater_id'] %>" class="text-right align-text-top">フォロー解除</a>
+        <% else %>
+          <a href="/follow/<%= post['creater_id'] %>" class="text-right">フォローする</a>
+        <% end %>
+        
+      <% else %>    
+        <div>:</div>
+      <% end %>
+      <% end %>
+      <div id="trim"><img src="/images/<%= post["image_url"] %>" class="card-img-top mt-3" alt="..." ></div>
+      <div class="card-body">
+        <p class="card-text"><%= post['content'] %></p>
+      </div>
+      <div>
+        <% if is_like(post['id']) %>
+        <a href="/unlike/<%= post['id'] %>"><i class="fas fa-heart fa-2x"></i></a>
+        <% else %>
+        <a href="/like/<%= post['id'] %>"><i class="far fa-heart fa-2x"></i></a>
+        <% end %> 
+      </div>
+      <!-- <i class="far fa-comment fa-2x"></i> -->
+      <p class="font-weight-bold">「いいね！」<%= post['like_count'] %>件</p>
+      <form action="/comment" method="POST">
+        <input type="hidden" name="post_id" value="<%= post['id'] %>">
+        <input type="text" name="comment" required="">
+        <input type="submit" value="コメント">
+      </form> 
+      <% post['comment'].each do |comment| %>
+      <li id="li"><%= comment['name'] %> <%= comment['comment'] %></li>
+      <% end %>
+    </div>
+    <% end %>
+  </div>
+  <nav aria-label="ページ送りの実例">
+    <ul class="pagination" id="page">
+      <% for i in (1..@page_size) %>
+      <% if  i == @n_page  %>
+      <li class="page-item"><a class="page-link bg-primary" href="/line?n_page= <%= i %>"><span class="font-weight-bold text-white"><%= i %></span></a></li>
+      <% else %>
+      <li class="page-item"><a class="page-link" href="/line?n_page= <%= i %>"><%= i %></a></li>
+      <% end %>
+      <% end %>
+    </ul>
+  </nav>
+</div>
+

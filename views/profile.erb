@@ -1,0 +1,43 @@
+<section class="jumbotron text-center">
+  <ul class="nav justify-content-center">
+    <li class="nav-item">
+      <a class="nav-link active" href="/profile">プロフィール</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/line?n_page=%201">一覧</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/top">マイページ</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/follow_list">フォローリスト</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/follower_list">フォロワーリスト</a>
+    </li>
+  </ul>    
+</section> 
+
+
+<h4>プロフィール</h4>
+名前=><span class="font-weight-bolder" id="name_size"><%= my_info['name'] %></span><br><br>
+フォロー<span class="font-weight-bold"><%= @follow_count %></span>人 
+フォロワー<span class="font-weight-bold"><%= @follower_count %></span>人
+<form action="/edit_profile" method="post" enctype="multipart/form-data">
+  <label>
+    <br>プロフィール画像：<br>
+    <img src="/profile_images/<%= my_info['profile_image_url'] %>" class="rounded-circle p-3" style="width: 250px;height: 250px;">
+    <p>⬇︎⬇︎プロフィール編集⬇︎⬇︎</p>
+    <input type="file" name="new_icon_img" required="">
+    <input type="submit" value="更新!">
+  </label><br>
+</form>
+<br>
+<br>
+
+
+
+
+
+
+
