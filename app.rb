@@ -6,6 +6,9 @@ require 'sinatra/cookies'
 
 enable :sessions
 
+ActiveRecord::Base.establish_connection(
+  ENV['DATABASE_URL'] )
+
 def client
   @client ||= Mysql2::Client.new(
     :host => '127.0.0.1',
