@@ -28,6 +28,7 @@ gem 'rack_csrf', '~> 2.5'
 group :development do
   gem 'mysql2'
 end
+
 group :production do
   gem 'pg'
   gem "activerecord-postgresql-adapter"

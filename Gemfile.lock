@@ -50,6 +50,11 @@ GEM
       rack (>= 1.0, < 3)
     rack_csrf (2.6.0)
       rack (>= 1.1.0)
+    rails_12factor (0.0.3)
+      rails_serve_static_assets
+      rails_stdout_logging
+    rails_serve_static_assets (0.0.5)
+    rails_stdout_logging (0.0.5)
     rake (12.3.2)
     sinatra-activerecord (2.0.13)
       activerecord (>= 3.2)
@@ -71,6 +76,7 @@ DEPENDENCIES
   pg
   rack-test
   rack_csrf (~> 2.5)
+  rails_12factor
   rake
   sinatra!
   sinatra-activerecord
