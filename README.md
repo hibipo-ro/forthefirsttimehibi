@@ -4,7 +4,8 @@
 publicフォルダ直下にimagesフォルダを作ってください。
 
 ターミナルで
-mysqlを開く br
+mysqlを開く
+  
 ```mysql -u root```
 データベース作成
 create database instagram; 
