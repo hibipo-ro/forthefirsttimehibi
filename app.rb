@@ -35,6 +35,7 @@ get '/' do
   erb :line, layout: :layout
 end
 
+#ログイン画面表示
 get '/login' do
   erb :login, layout: :layout
 end
@@ -58,10 +59,11 @@ post '/login' do
   redirect '/line'
 end
 
+#新規登録画面
 get '/sign_up' do
   erb :sign_up
 end
-
+#新規登録
 post '/sign_up' do
   cookies[:s_name] = params['s_name']
   
@@ -97,12 +99,12 @@ post '/sign_up' do
   
   redirect '/login'
 end
-
+#ログアウト
 get '/logout' do
   session[:user_id] = nil  
   redirect '/login'
 end
-
+#マイページ
 get '/top' do
   cookies[:msg] = 'ログインお願いします'
   redirect '/line' unless session[:user_id]
@@ -117,7 +119,7 @@ get '/top' do
 end
 
 $n_limit = 3
-
+#一覧表示
 get '/line' do
   if params[:n_page].nil?
     @posts = client.xquery("SELECT p.id, p.user_id, p.image_url, p.content, u.id creater_id, u.name, u.password, u.profile_image_url FROM posts p join users u on p.user_id = u.id order by id desc limit #{$n_limit}")
@@ -133,7 +135,7 @@ get '/line' do
   end
   erb :line
 end
-
+#投稿
 post '/send_image' do
   image_url = params[:image][:filename]
   content = params[:content]
@@ -143,7 +145,7 @@ post '/send_image' do
   FileUtils.mv(params[:image][:tempfile], "./public/images/#{params[:image][:filename]}")  
   redirect '/top'      
 end
-
+#コメント
 post '/comment' do
   cookies[:msg] = 'ログインお願いします'
   redirect '/line' unless session[:user_id]
@@ -156,37 +158,38 @@ post '/comment' do
   redirect '/line'      
 end
 
+#編集
 get '/edit_form/:id' do
   redirect '/login' unless session[:user_id]
   @edit = client.xquery('SELECT * FROM posts where id = ?', params[:id]).first  
   erb :edit_form
 end
-
+#投稿内容更新
 post '/update' do
   content = params[:content]
   id = params[:id]
   client.xquery('update posts set content = ? where id = ?',content, id)
   redirect '/top'  
 end
-
+#投稿削除
 get '/delete/:id' do
   redirect '/login' unless session[:user_id]
   client.xquery('delete from posts where id = ?;', params[:id])
   redirect '/top'
 end
-
+#フォロー
 get '/follow/:to_user_id' do
   redirect '/line' unless session[:user_id]
   client.xquery('insert into follows values(null, ?, ?)', session[:user_id], params[:to_user_id])
   redirect '/line'
 end
-
+#フォロー外す
 get '/unfollow/:to_user_id' do
   redirect '/login' unless session[:user_id]
   client.xquery('delete from follows where from_user_id = ? && to_user_id = ?;', session[:user_id], params[:to_user_id])
   redirect '/line'
 end
-
+#いいね
 get '/like/:post_id' do
   cookies[:msg] = 'ログインお願いします'
   redirect '/line' unless session[:user_id]
@@ -194,7 +197,7 @@ get '/like/:post_id' do
   client.xquery('insert into likes values(null, ?, ?)', session[:user_id], params[:post_id])
   redirect '/line'  
 end
-
+#いいね外す
 get '/unlike/:post_id' do
   cookies[:msg] = 'ログインお願いします'
   redirect '/line' unless session[:user_id]
@@ -202,7 +205,7 @@ get '/unlike/:post_id' do
   client.xquery('delete from likes where user_id = ? && post_id = ?;', session[:user_id], params[:post_id])
   redirect '/line'
 end
-
+#プロフィール
 get '/profile' do
   cookies[:msg] = 'ログインお願いします'
   redirect '/line' unless session[:user_id]
@@ -211,14 +214,14 @@ get '/profile' do
   @follower_count = client.xquery("select count(*) from follows where to_user_id = ?",session[:user_id]).first['count(*)']
   erb :profile
 end
-
+#プロフィール画像変更
 post '/edit_profile' do
   new_icon_img = params[:new_icon_img][:filename]
   FileUtils.mv(params[:new_icon_img][:tempfile], "./public/profile_images/#{params[:new_icon_img][:filename]}")  
   client.xquery('update users set profile_image_url = ? where id = ?;', new_icon_img, session[:user_id])
   redirect '/profile'
 end
-
+#フォローリスト
 get '/follow_list' do
   cookies[:msg] = 'ログインお願いします'
   redirect '/line' unless session[:user_id]
@@ -227,7 +230,7 @@ get '/follow_list' do
   @follow_count = client.xquery("select count(*) from follows where from_user_id = ?",session[:user_id]).first['count(*)']
   erb :follow_list
 end
-
+#フォロワーリスト
 get '/follower_list' do
   cookies[:msg] = 'ログインお願いします'
   redirect '/line' unless session[:user_id]
@@ -236,7 +239,7 @@ get '/follower_list' do
   @follower_count = client.xquery("select count(*) from follows where to_user_id = ?",session[:user_id]).first['count(*)']
   erb :follower_list
 end
-
+#いいねの数ランキング表示
 get '/number_like' do
   @posts = client.xquery("SELECT count(*) as like_count, p.id, p.user_id, p.image_url, p.content, u.id creater_id, u.name, u.password, u.profile_image_url FROM posts p join users u on p.user_id = u.id join likes l on l.post_id = p.id group by post_id order by like_count desc limit 5;")
   @posts.each do |item|
