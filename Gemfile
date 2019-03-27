@@ -24,6 +24,10 @@ gem 'sinatra-activerecord'
 
 gem 'rack_csrf', '~> 2.5'
 
+gem 'pg'
+
+gem 'mysql2', groups: %w(test development), require: false
+
 
 group :development do
   gem 'mysql2'
@@ -32,6 +36,11 @@ end
 group :production do
   gem 'pg'
   gem "activerecord-postgresql-adapter"
+end
+
+group :test do
+  gem 'rspec'
+  gem 'rack-test'
 end
 
 
