@@ -28,11 +28,11 @@ def client
 end
 
 def my_info
-  @my_info = client.exec('select * from users where id = $1', [session[:user_id])].map{ |i| i }.first
+  @my_info = client.exec('select * from users where id = $1', [session[:user_id]]).map{ |i| i }.first
 end
 
 def is_follow(creater_id)
-  @is_follow = client.exec('select * from follows where from_user_id = $1 && to_user_id = $2;', [session[:user_id], creater_id)].first 
+  @is_follow = client.exec('select * from follows where from_user_id = $1 && to_user_id = $2;', [session[:user_id], creater_id]).first 
 end
 
 def is_like(post_id)
