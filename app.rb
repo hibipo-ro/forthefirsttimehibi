@@ -27,6 +27,7 @@ def client
   )
 end
 
+
 def my_info
   @my_info = client.exec('select * from users where id = $1', [session[:user_id]]).map{ |i| i }.first
 end
