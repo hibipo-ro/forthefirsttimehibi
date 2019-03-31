@@ -28,6 +28,8 @@ gem 'pg'
 
 gem 'mysql2', groups: %w(test development), require: false
 
+gem 'rails_12factor', group: :production
+
 
 group :development do
   gem 'mysql2'
