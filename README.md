@@ -14,7 +14,10 @@
 + いいね  
 + コメント  
 
-Sinatra Bootstrap4 MySQL 
+# 使用した技術  
++ Sinatra  
++ Bootstrap4  
++ MySQL   
 
 
 
