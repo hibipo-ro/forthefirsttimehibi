@@ -5,8 +5,8 @@ require 'mysql2-cs-bind'
 require 'sinatra/cookies'
 
 enable :sessions
-ActiveRecord::Base.establish_connection(
-  ENV['DATABASE_URL'] )
+# ActiveRecord::Base.establish_connection(
+#   ENV['DATABASE_URL'] )
 
 def client
   @client ||= Mysql2::Client.new(
