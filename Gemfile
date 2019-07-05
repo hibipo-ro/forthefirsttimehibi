@@ -18,8 +18,8 @@ gem 'pry-byebug'
 #   gem 'mysql2'
 # end
 group :production, :development do
+  gem 'mysql'
   gem 'mysql2'
-  gem "activerecord-postgresql-adapter"
 end
 group :test do
   gem 'rspec'
